@@ -1,6 +1,6 @@
-import { ExternalLink, Laptop, Menu, Moon, Sun, User } from 'lucide-react';
+import { ExternalLink, Laptop, Moon, Sun, User } from "lucide-react";
 
-import { useTheme } from '@/components/ThemeProvider';
+import { useTheme } from "@/components/ThemeProvider";
 import {
   Button,
   DropdownMenu,
@@ -11,8 +11,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@/components/ui';
-import { env } from '@/lib/env';
+} from "@/components/ui";
 
 const DevbarMenu = () => {
   const { setTheme } = useTheme();
@@ -20,39 +19,39 @@ const DevbarMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' size='icon'>
-          <Menu className='h-[1.2rem] w-[1.2rem]' />
-          <span className='sr-only'>Toggle theme</span>
+        <Button variant="outline" size="icon">
+          <User className="h-[1.2rem] w-[1.2rem]" />
+          <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
+      <DropdownMenuContent align="end">
         <DropdownMenuItem>
-          <ExternalLink className='mr-2 h-4 w-4' />
+          <ExternalLink className="mr-2 h-4 w-4" />
           Course
         </DropdownMenuItem>
-        <a href='#' target='_blank' rel='noreferrer'>
+        <a href="/" target="_blank" rel="noreferrer">
           <DropdownMenuItem>
-            <User className='mr-2 h-4 w-4' />
+            <User className="mr-2 h-4 w-4" />
             Discord
           </DropdownMenuItem>
         </a>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <Sun className='mr-2 h-4 w-4' />
+            <Sun className="mr-2 h-4 w-4" />
             <span>Theme</span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
-              <DropdownMenuItem onClick={() => setTheme('light')}>
-                <Sun className='mr-2 h-4 w-4' />
+              <DropdownMenuItem onClick={() => setTheme("light")}>
+                <Sun className="mr-2 h-4 w-4" />
                 Light
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('dark')}>
-                <Moon className='mr-2 h-4 w-4' />
+              <DropdownMenuItem onClick={() => setTheme("dark")}>
+                <Moon className="mr-2 h-4 w-4" />
                 Dark
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('system')}>
-                <Laptop className='mr-2 h-4 w-4' />
+              <DropdownMenuItem onClick={() => setTheme("system")}>
+                <Laptop className="mr-2 h-4 w-4" />
                 System
               </DropdownMenuItem>
             </DropdownMenuSubContent>
