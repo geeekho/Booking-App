@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from "react";
 
-import { useTheme } from '@/components/ThemeProvider';
+import { useTheme } from "@/components/ThemeProvider";
 import {
   Button,
   Progress,
@@ -10,12 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
   Separator,
-} from '@/components/ui';
-import { env } from '@/lib/env';
-import { getImageUrl } from '@/lib/utils/images';
-import { getItem, setItem } from '@/lib/utils/localStorage';
+} from "@/components/ui";
+import { env } from "@/lib/env";
+import { getImageUrl } from "@/lib/utils/images";
+import { getItem, setItem } from "@/lib/utils/localStorage";
 
-import DevbarMenu from './DevbarMenu';
+import DevbarMenu from "./DevbarMenu";
 import {
   Completed as M0Completed,
   Intro as M0Intro,
@@ -23,7 +23,7 @@ import {
   Step2 as M0Step2,
   Step3 as M0Step3,
   Step4 as M0Step4,
-} from './Module0';
+} from "./Module0";
 import {
   Completed as M1Completed,
   Intro as M1Intro,
@@ -33,7 +33,7 @@ import {
   Step4 as M1Step4,
   Step5 as M1Step5,
   Step6 as M1Step6,
-} from './Module1';
+} from "./Module1";
 import {
   Completed as M2Completed,
   Intro as M2Intro,
@@ -43,7 +43,7 @@ import {
   Step4 as M2Step4,
   Step5 as M2Step5,
   Step6 as M2Step6,
-} from './Module2';
+} from "./Module2";
 import {
   Completed as M3Completed,
   Intro as M3Intro,
@@ -56,7 +56,7 @@ import {
   Step7 as M3Step7,
   Step8 as M3Step8,
   Step9 as M3Step9,
-} from './Module3';
+} from "./Module3";
 import {
   Completed as M4Completed,
   Intro as M4Intro,
@@ -72,7 +72,7 @@ import {
   Step10 as M4Step10,
   Step11 as M4Step11,
   Step12 as M4Step12,
-} from './Module4';
+} from "./Module4";
 import {
   Completed as M5Completed,
   Intro as M5Intro,
@@ -86,7 +86,7 @@ import {
   Step8 as M5Step8,
   Step9 as M5Step9,
   Step10 as M5Step10,
-} from './Module5';
+} from "./Module5";
 import {
   Completed as M6Completed,
   Intro as M6Intro,
@@ -105,7 +105,7 @@ import {
   Step13 as M6Step13,
   Step14 as M6Step14,
   Step15 as M6Step15,
-} from './Module6';
+} from "./Module6";
 import {
   Completed as M7Completed,
   Intro as M7Intro,
@@ -125,20 +125,20 @@ import {
   Step14 as M7Step14,
   Step15 as M7Step15,
   Step16 as M7Step16,
-} from './Module7';
+} from "./Module7";
 import {
   Completed as M8Completed,
   Intro as M8Intro,
   Step1 as M8Step1,
   Step2 as M8Step2,
-} from './Module8';
+} from "./Module8";
 
 // Declares the initial module to start on
-const INITIAL_MODULE = '0-introduction';
+const INITIAL_MODULE = "0-introduction";
 
 // Creates an object with all the modules and their steps
 const modules = {
-  '0-introduction': {
+  "0-introduction": {
     steps: {
       0: <M0Intro />,
       1: <M0Step1 />,
@@ -148,7 +148,7 @@ const modules = {
       5: <M0Completed />,
     },
   },
-  '1-react-fundamentals': {
+  "1-react-fundamentals": {
     steps: {
       0: <M1Intro />,
       1: <M1Step1 />,
@@ -160,7 +160,7 @@ const modules = {
       7: <M1Completed />,
     },
   },
-  '2-state-and-event-handlers': {
+  "2-state-and-event-handlers": {
     steps: {
       0: <M2Intro />,
       1: <M2Step1 />,
@@ -172,7 +172,7 @@ const modules = {
       7: <M2Completed />,
     },
   },
-  '3-effects-and-data-fetching': {
+  "3-effects-and-data-fetching": {
     steps: {
       0: <M3Intro />,
       1: <M3Step1 />,
@@ -187,7 +187,7 @@ const modules = {
       10: <M3Completed />,
     },
   },
-  '4-routes-and-navigation': {
+  "4-routes-and-navigation": {
     steps: {
       0: <M4Intro />,
       1: <M4Step1 />,
@@ -205,7 +205,7 @@ const modules = {
       13: <M4Completed />,
     },
   },
-  '5-hooks-and-performance': {
+  "5-hooks-and-performance": {
     steps: {
       0: <M5Intro />,
       1: <M5Step1 />,
@@ -221,7 +221,7 @@ const modules = {
       11: <M5Completed />,
     },
   },
-  '6-state-management': {
+  "6-state-management": {
     steps: {
       0: <M6Intro />,
       1: <M6Step1 />,
@@ -242,7 +242,7 @@ const modules = {
       16: <M6Completed />,
     },
   },
-  '7-forms-and-authentication': {
+  "7-forms-and-authentication": {
     steps: {
       0: <M7Intro />,
       1: <M7Step1 />,
@@ -264,7 +264,7 @@ const modules = {
       17: <M7Completed />,
     },
   },
-  '8-deploying': {
+  "8-deploying": {
     steps: {
       0: <M8Intro />,
       1: <M8Step1 />,
@@ -285,22 +285,22 @@ const Devbar = () => {
 
   // Creates state for the current module and defaults to localStorage if it exists
   const [currentModule, setCurrentModule] = useState(
-    getItem('project-react-module') || INITIAL_MODULE,
+    getItem("project-react-module") || INITIAL_MODULE,
   );
 
   // Creates state for the current module progress and defaults to localStorage if it exists
   const [moduleProgress, setModuleProgress] = useState(
-    getItem('project-react-moduleProgress') || initialModuleProgress,
+    getItem("project-react-moduleProgress") || initialModuleProgress,
   );
 
   // On mount, sets the initial module and module progress in localStorage if it doesn't exist
   useEffect(() => {
-    if (!getItem('project-react-module')) {
-      setItem('project-react-module', INITIAL_MODULE);
+    if (!getItem("project-react-module")) {
+      setItem("project-react-module", INITIAL_MODULE);
     }
 
-    if (!getItem('project-react-moduleProgress')) {
-      setItem('project-react-moduleProgress', initialModuleProgress);
+    if (!getItem("project-react-moduleProgress")) {
+      setItem("project-react-moduleProgress", initialModuleProgress);
     }
   }, []);
 
@@ -319,7 +319,7 @@ const Devbar = () => {
   // Handles the module change
   const handleModuleChange = (moduleKey) => {
     setCurrentModule(moduleKey);
-    setItem('project-react-module', moduleKey);
+    setItem("project-react-module", moduleKey);
   };
 
   // Handles the previous step click
@@ -331,7 +331,7 @@ const Devbar = () => {
       };
 
       setModuleProgress(newModuleProgress);
-      setItem('project-react-moduleProgress', newModuleProgress);
+      setItem("project-react-moduleProgress", newModuleProgress);
     }
   };
 
@@ -344,38 +344,38 @@ const Devbar = () => {
       };
 
       setModuleProgress(newModuleProgress);
-      setItem('project-react-moduleProgress', newModuleProgress);
+      setItem("project-react-moduleProgress", newModuleProgress);
     }
   };
 
   return (
-    <div className='relative h-screen w-[700px] flex-col items-center overflow-auto bg-card'>
-      <div className='flex flex-row items-center justify-between gap-4 p-4'>
-        <div className='flex flex-row items-center gap-3'>
+    <div className="relative h-screen w-[700px] flex-col items-center overflow-auto bg-card">
+      <div className="sticky left-0 top-0 z-50 flex flex-row items-center justify-between gap-4 bg-card p-4">
+        <div className="flex flex-row items-center gap-3">
           <img
             src={getImageUrl(
-              theme === 'dark' ? '100w-logo.png' : '100w-logo-black.png',
+              theme === "dark" ? "100w-logo.png" : "100w-logo-black.png",
             )}
-            alt='logo'
-            className='h-[36px]'
+            alt="logo"
+            className="h-[36px]"
           />
           <a
-            className='text-lg leading-5'
-            href={env.COSDEN_SOLUTIONS_URL + '/project-react'}
-            target='_blank'
-            rel='noreferrer'
+            className="text-lg leading-5"
+            href={env.COSDEN_SOLUTIONS_URL + "/project-react"}
+            target="_blank"
+            rel="noreferrer"
           >
             <b>Project React</b>
             <br />
-            <span className='text-sm text-muted-foreground'>
+            <span className="text-sm text-muted-foreground">
               Made by <b>Cosden</b> Solutions
             </span>
           </a>
         </div>
-        <div className='flex flex-row items-center gap-4'>
+        <div className="flex flex-row items-center gap-4">
           <Button
             disabled={moduleStep === 0}
-            variant='secondary'
+            variant="secondary"
             onClick={handlePreviousStep}
           >
             Previous
@@ -392,25 +392,25 @@ const Devbar = () => {
 
       <Separator />
 
-      <div className='p-4'>
+      <div className="p-4">
         <Progress value={progressPercentage} />
       </div>
 
       <Separator />
 
-      <div className='p-4 pb-0'>
+      <div className="p-4 pb-0">
         <Select defaultValue={currentModule} onValueChange={handleModuleChange}>
-          <SelectTrigger className='mb-2 w-full'>
-            <SelectValue placeholder='Select a module' />
+          <SelectTrigger className="mb-2 w-full">
+            <SelectValue placeholder="Select a module" />
           </SelectTrigger>
           <SelectContent>
             {Object.keys(modules).map((moduleKey) => (
               <SelectItem key={moduleKey} value={moduleKey}>
                 {moduleKey}
-                <span className='ml-2 text-sm text-muted-foreground'>
+                <span className="ml-2 text-sm text-muted-foreground">
                   {moduleProgress[moduleKey] + 1 ===
                   Object.keys(modules[moduleKey].steps).length
-                    ? 'Completed'
+                    ? "Completed"
                     : `(${moduleProgress[moduleKey] + 1} of ${
                         Object.keys(modules[moduleKey].steps).length
                       } tasks)`}
@@ -421,7 +421,7 @@ const Devbar = () => {
         </Select>
       </div>
 
-      <div className='p-4'>{modules[currentModule].steps[moduleStep]}</div>
+      <div className="p-4">{modules[currentModule].steps[moduleStep]}</div>
     </div>
   );
 };
