@@ -1,3 +1,4 @@
+import { Menu } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import { useTheme } from "@/components/ThemeProvider";
@@ -280,7 +281,7 @@ const initialModuleProgress = Object.keys(modules).reduce((acc, moduleKey) => {
   return acc;
 }, {});
 
-const Devbar = () => {
+const Devbar = ({ drawer }) => {
   const { theme } = useTheme();
 
   // Creates state for the current module and defaults to localStorage if it exists
@@ -292,6 +293,8 @@ const Devbar = () => {
   const [moduleProgress, setModuleProgress] = useState(
     getItem("project-react-moduleProgress") || initialModuleProgress,
   );
+
+  const [isOpen, setIsOpen] = drawer;
 
   // On mount, sets the initial module and module progress in localStorage if it doesn't exist
   useEffect(() => {
@@ -348,8 +351,16 @@ const Devbar = () => {
     }
   };
 
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="relative h-screen w-[700px] flex-col items-center overflow-auto bg-card">
+    <div
+      className={`relative h-screen w-[700px] flex-col items-center overflow-auto bg-card ${
+        isOpen ? "animate-openmenu" : "animate-closemenu"
+      }`}
+    >
       <div className="sticky left-0 top-0 z-50 flex flex-row items-center justify-between gap-4 bg-card p-4">
         <div className="flex flex-row items-center gap-3">
           <img
@@ -359,12 +370,7 @@ const Devbar = () => {
             alt="logo"
             className="h-[36px]"
           />
-          <a
-            className="text-lg leading-5"
-            href={env.COSDEN_SOLUTIONS_URL + "/project-react"}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className="text-lg leading-5" href={env.BASE_URL} rel="noreferrer">
             <b>Project React</b>
             <br />
             <span className="text-sm text-muted-foreground">
@@ -387,6 +393,10 @@ const Devbar = () => {
             Next
           </Button>
           <DevbarMenu />
+          <Button variant="outline" size="icon" onClick={toggleDrawer}>
+            <Menu className="h-[1.2rem] w-[1.2rem]" />
+            <span className="sr-only">Toggle sidebar</span>
+          </Button>
         </div>
       </div>
 

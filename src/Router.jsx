@@ -1,7 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import App from "./App";
 import HomePage from "./pages/HomePage";
+import ListingDetailsPage from "./pages/ListingDetailsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 //old router method
 // const router = createBrowserRouter([
@@ -24,7 +26,10 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/listings/:listingId" element={<ListingDetailsPage />} />
         </Route>
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </BrowserRouter>
   );
