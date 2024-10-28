@@ -4,10 +4,11 @@ import { Outlet } from "react-router-dom";
 
 import Devbar from "@/components/Devbar/Devbar";
 
+import Navbar from "./components/Navbar";
 import { Button } from "./components/ui";
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="relative">
@@ -22,12 +23,13 @@ const App = () => {
         <Button
           variant="outline"
           size="icon"
-          className="fixed left-0 top-0 m-4 ml-0"
+          className={`fixed left-0 top-2 ${!isOpen ? "z-50" : ""}`}
           onClick={() => setIsOpen(true)}
         >
           <Menu className="h-[1.2rem] w-[1.2rem]" />
-          <span className="sr-only">Toggle theme</span>
+          <span className="sr-only">Toggle drawer</span>
         </Button>
+        <Navbar />
         <Outlet />
       </div>
     </div>
