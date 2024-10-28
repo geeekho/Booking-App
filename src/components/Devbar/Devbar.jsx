@@ -53,7 +53,7 @@ const Devbar = ({ drawer }) => {
           </div>
         </div>
         <div className="flex flex-row items-center gap-4">
-          <DevbarMenu />
+          {/* <DevbarMenu /> */}
           <Button variant="outline" size="icon" onClick={toggleDrawer}>
             <Menu className="h-[1.2rem] w-[1.2rem]" />
             <span className="sr-only">Toggle sidebar</span>
