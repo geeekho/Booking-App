@@ -26,7 +26,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useTheme } from "./ThemeProvider";
 
 const Navbar = () => {
-  const { setToken } = useAuth();
+  const { token, setToken } = useAuth();
   const { setTheme } = useTheme();
 
   const handleSignOut = async () => {
@@ -43,10 +43,13 @@ const Navbar = () => {
     <>
       <div className="sticky top-0 z-40 flex flex-row items-center justify-around gap-8 bg-background/80 px-8 py-4">
         <div className="flex-end flex flex-1 flex-row items-center justify-end gap-8">
-          <div className="flex flex-1 flex-row items-center justify-center gap-8">
-            <Link to="/">Home</Link>
-            <Link to="/favorites">Favorites</Link>
-          </div>
+          {token ? (
+            <div className="flex flex-1 flex-row items-center justify-center gap-8">
+              <Link to="/">Home</Link>
+              <Link to="/favorites">Favorites</Link>
+            </div>
+          ) : null}
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
@@ -100,9 +103,11 @@ const Navbar = () => {
                 </DropdownMenuItem>
               </a>
               <Separator />
-              <DropdownMenuItem onClick={handleSignOut}>
-                Sign Out
-              </DropdownMenuItem>
+              {token ? (
+                <DropdownMenuItem onClick={handleSignOut}>
+                  Sign Out
+                </DropdownMenuItem>
+              ) : null}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

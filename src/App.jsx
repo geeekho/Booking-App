@@ -6,12 +6,9 @@ import Devbar from "@/components/Devbar/Devbar";
 
 import Navbar from "./components/Navbar";
 import { Button } from "./components/ui";
-import { useAuth } from "./hooks/useAuth";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const { token } = useAuth();
-
   return (
     <div className="relative">
       <div
@@ -25,13 +22,13 @@ const App = () => {
         <Button
           variant="outline"
           size="icon"
-          className={`fixed left-0 top-2 ${!isOpen ? "z-50" : ""}`}
+          className={`fixed left-4 top-4 ${!isOpen ? "z-50" : ""}`}
           onClick={() => setIsOpen(true)}
         >
           <Menu className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">Toggle drawer</span>
         </Button>
-        {token ? <Navbar /> : null}
+        <Navbar />
         <Outlet />
       </div>
     </div>
