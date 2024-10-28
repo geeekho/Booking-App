@@ -1,4 +1,11 @@
-import { ExternalLink, Laptop, Moon, Sun, User } from "lucide-react";
+import {
+  GalleryHorizontal,
+  Github,
+  Laptop,
+  Moon,
+  Sun,
+  User,
+} from "lucide-react";
 
 import { useTheme } from "@/components/ThemeProvider";
 import {
@@ -25,14 +32,16 @@ const DevbarMenu = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem>
-          <ExternalLink className="mr-2 h-4 w-4" />
-          Course
-        </DropdownMenuItem>
-        <a href="/" target="_blank" rel="noreferrer">
+        <a href="https://github.com/geeekho" target="_blank" rel="noreferrer">
           <DropdownMenuItem>
-            <User className="mr-2 h-4 w-4" />
-            Discord
+            <Github className="mr-2 h-4 w-4" />
+            Github
+          </DropdownMenuItem>
+        </a>
+        <a href="https://github.com/geeekho" target="_blank" rel="noreferrer">
+          <DropdownMenuItem>
+            <GalleryHorizontal className="mr-2 h-4 w-4" />
+            Portfolio
           </DropdownMenuItem>
         </a>
         <DropdownMenuSub>

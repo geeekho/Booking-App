@@ -32,18 +32,16 @@ const Devbar = ({ drawer }) => {
             rel="noreferrer"
           >
             <img
-              src={getImageUrl(
-                theme === "dark" ? "100w-logo.png" : "100w-logo-black.png",
-              )}
+              src={getImageUrl(theme === "dark" ? "logo.png" : "logo.png")}
               alt="logo"
-              className="h-[36px]"
+              className="h-[40px]"
             />
           </Link>
           <div>
-            <b>Project React - Booking App Demo</b>
+            <b>EazyBook - Book Smart, Live Easy</b>
             <br />
             <span className="text-sm text-muted-foreground">
-              Made by{" "}
+              Demo Made by{" "}
               <a
                 href="https://github.com/geeekho"
                 target="_blank"
