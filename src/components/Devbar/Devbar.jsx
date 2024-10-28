@@ -6,7 +6,6 @@ import { Button, Separator } from "@/components/ui";
 import { env } from "@/lib/env";
 import { getImageUrl } from "@/lib/utils/images";
 
-import DevbarMenu from "./DevbarMenu";
 import { Intro } from "./Intro";
 
 const Devbar = ({ drawer }) => {
