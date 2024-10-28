@@ -1,5 +1,19 @@
 # Project React - Booking App
 
+## Project Overview
+
+The project covers essential aspects including:
+
+- **Setup & Dependencies**: Establishing the project environment with necessary libraries and tools.
+- **API Integration**: Connecting to a mock service for data retrieval and management.
+- **UI Components**: Designing reusable components for an intuitive user interface.
+- **State Management**: Implementing state management solutions using React Hooks and Redux for efficient data handling.
+- **Navigation & Routing**: Setting up smooth navigation through client-side routing.
+- **Performance Optimization**: Ensuring a responsive experience with best practices for performance.
+- **Forms & Authentication**: Creating user-friendly forms and secure authentication methods.
+- **Deployment**: Finalizing the app and deploying it to Vercel for public access.
+
+
 ## Running the project
 
 To run the project, follow these steps.
