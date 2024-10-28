@@ -6,9 +6,11 @@ import Devbar from "@/components/Devbar/Devbar";
 
 import Navbar from "./components/Navbar";
 import { Button } from "./components/ui";
+import { useAuth } from "./hooks/useAuth";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const { token } = useAuth();
 
   return (
     <div className="relative">
@@ -29,7 +31,7 @@ const App = () => {
           <Menu className="h-[1.2rem] w-[1.2rem]" />
           <span className="sr-only">Toggle drawer</span>
         </Button>
-        <Navbar />
+        {token ? <Navbar /> : null}
         <Outlet />
       </div>
     </div>
