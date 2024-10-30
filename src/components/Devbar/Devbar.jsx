@@ -19,7 +19,7 @@ const Devbar = ({ drawer }) => {
 
   return (
     <div
-      className={`relative h-screen w-[700px] flex-col items-center overflow-auto bg-card ${
+      className={`relative h-screen w-[700px] flex-col items-center overflow-auto bg-card transition-all ${
         isOpen ? "animate-openmenu" : "animate-closemenu"
       }`}
     >
