@@ -17,7 +17,7 @@ const App = () => {
         {isOpen ? <Devbar drawer={[isOpen, setIsOpen]} /> : null}
       </div>
       <div
-        className={` relative h-svh overflow-hidden overflow-y-auto ${!isOpen ? "z-50" : ""}`}
+        className={` scroll-bar relative h-svh overflow-hidden overflow-y-auto ${!isOpen ? "z-50" : ""}`}
       >
         <Button
           variant="outline"
