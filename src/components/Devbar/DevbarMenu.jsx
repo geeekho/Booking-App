@@ -38,7 +38,11 @@ const DevbarMenu = () => {
             Github
           </DropdownMenuItem>
         </a>
-        <a href="https://github.com/geeekho" target="_blank" rel="noreferrer">
+        <a
+          href="https://wajdi-sadouki.vercel.app/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <DropdownMenuItem>
             <GalleryHorizontal className="mr-2 h-4 w-4" />
             Portfolio
