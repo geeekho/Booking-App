@@ -93,7 +93,7 @@ const Navbar = () => {
                 </DropdownMenuItem>
               </a>
               <a
-                href="https://github.com/geeekho"
+                href="https://wajdi-sadouki-seven-mocha-66.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
               >
